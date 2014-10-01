@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cameraActivityLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CameraActivity">
+
+  <SurfaceView
+      android:id="@+id/cameraView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentTop="true" />
+
+  <Button
+      android:id="@+id/recordButton"
+      android:layout_width="268dp"
+      android:layout_height="267dp"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:background="@drawable/activity_camera_button_start"
+      android:onClick="onClickRecordButton"
+      android:alpha="0.75" />  
+  
+  <LinearLayout 
+      android:id="@+id/recordingBar"
+      android:visibility="invisible"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentBottom="true"
+      android:orientation="horizontal"
+      android:background="@color/light"
+      android:alpha="0.75">
+      
+    <RelativeLayout
+        android:layout_width="match_parent"
+      	android:layout_height="wrap_content"
+      	android:background="@color/light">
+        
+      <TextView
+      	  android:layout_width="wrap_content"
+      	  android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:gravity="center"
+          android:textColor="@color/highlight"
+          android:text="@string/activity_camera_click_to_tag_text"
+          android:textAppearance="?android:attr/textAppearanceSmall" />  
+        
+      <Button
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginRight="5dp"
+          android:layout_marginBottom="5dp"
+          android:layout_marginTop="5dp"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:background="@drawable/activity_camera_button_stop"
+          android:onClick="onClickStopButton"
+          android:alpha="0.90"
+          android:gravity="right|center_vertical" />
+        
+    </RelativeLayout>
+      
+  </LinearLayout>
+  
+  <TableLayout
+      android:id="@+id/keypad"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:visibility="invisible">
+      
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+      <RelativeLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_span="3"
+          android:orientation="horizontal"
+          android:background="@drawable/activity_camera_text_box"
+          android:alpha="0.75"
+          android:layout_marginBottom="5dp">
+          
+        <EditText
+            android:id="@+id/tagEntryField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:enabled="false"
+            android:inputType="number"
+            android:maxLines="1"
+            android:maxLength="5"
+            android:minEms="5"
+            android:maxEms="5"
+            android:scrollHorizontally="true"
+            android:textAlignment="center"
+            android:textColor="#F39C13"
+            android:textSize="40sp"
+            android:background="@android:color/transparent" />
+        
+        <Button
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/activity_camera_button_delete"
+            android:onClick="onClickDeleteButton" />  
+          
+      </RelativeLayout>
+        
+    </TableRow>
+
+    <TableRow
+    	android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+      
+      <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:background="@drawable/activity_camera_button_keypad_top_left"
+          android:onClick="onClickKeypadButton"
+          android:tag="7"
+          android:text="@string/numeric_7" />
+
+      <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:onClick="onClickKeypadButton"
+          android:tag="8"
+          android:text="@string/numeric_8" />
+        
+      <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:background="@drawable/activity_camera_button_keypad_top_right"
+          android:onClick="onClickKeypadButton"
+          android:tag="9"
+          android:text="@string/numeric_9" />
+      
+    </TableRow>
+    
+    <TableRow
+    	android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+      
+      <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:onClick="onClickKeypadButton"
+          android:tag="4"
+          android:text="@string/numeric_4" />
+
+      <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:onClick="onClickKeypadButton"
+          android:tag="5"
+          android:text="@string/numeric_5" />
+        
+      <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:onClick="onClickKeypadButton"
+          android:tag="6"
+          android:text="@string/numeric_6" />
+      
+    </TableRow>
+    
+    <TableRow
+    	android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+      
+      <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:onClick="onClickKeypadButton"
+          android:tag="1"
+          android:text="@string/numeric_1" />
+
+      <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:onClick="onClickKeypadButton"
+          android:tag="2"
+          android:text="@string/numeric_2" />
+        
+      <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:onClick="onClickKeypadButton"
+          android:tag="3"
+          android:text="@string/numeric_3" />
+      
+    </TableRow>
+    
+	<TableRow
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+      
+	  <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:background="@drawable/activity_camera_button_keypad_bottom_left"
+          android:onClick="onClickKeypadButton"
+          android:tag="0"
+          android:text="@string/numeric_0" />
+	    
+	  <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:layout_span="2"
+          android:background="@drawable/activity_camera_button_keypad_bottom_right"
+          android:onClick="onClickSubmitTag"
+          android:text="@string/activity_camera_submit_tag_text" />
+	  
+	</TableRow>
+
+    <TableRow
+    	android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+      <Button
+          style="@style/activity_camera_button_keypad"
+          android:alpha="0.75"
+          android:layout_span="3"
+          android:layout_marginTop="20dp"
+          android:paddingLeft="5dp"
+          android:background="@drawable/activity_camera_button_hotspot"
+          android:drawableLeft="@drawable/activity_camera_button_hotspot_image"
+          android:onClick="onClickHotTagButton"
+          android:text="@string/activity_camera_submit_hottag_text" />
+      
+    </TableRow>
+      
+  </TableLayout>      
+
+</RelativeLayout>

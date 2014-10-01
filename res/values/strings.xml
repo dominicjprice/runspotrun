@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="app_name">RunSpotRun</string>
+  <string name="activity_title_about">RunSpotRun | About</string>
+  <string name="activity_title_home">RunSpotRun | Home</string>
+  <string name="activity_title_review">RunSpotRun | Review</string>
+  <string name="activity_title_settings">RunSpotRun | Settings</string>
+        
+  <string name="preference_allow_automated_uploads">
+    preference_allow_automated_uploads
+  </string>
+  <string name="preference_title_allow_automated_uploads">
+    Automate video uploads?
+  </string>
+  <string name="preference_summary_allow_automated_uploads">
+    If manual is selected, you will need to individually upload recorded videos
+  </string>
+  <string-array name="preference_allow_automated_uploads_names">
+    <item>Automatic</item>
+    <item>Manual</item>
+  </string-array>
+  <string-array name="preference_allow_automated_uploads_values">
+    <item>automatic</item>
+    <item>manual</item>
+  </string-array>
+  
+  <string name="preference_allowed_connection_types_for_upload">
+    preference_allowed_connection_types_for_upload
+  </string>
+  <string name="preference_title_allowed_connection_types_for_upload">
+    Video upload connection type?
+  </string>
+  <string name="preference_summary_allowed_connection_types_for_upload">
+    Select WiFi Only to upload videos only when connected to a WiFi network
+  </string>
+  <string-array name="preference_allowed_connection_types_for_upload_names">
+    <item>Wi-Fi Only</item>
+    <item>Wi-Fi and 3G</item>
+  </string-array>
+  <string-array name="preference_allowed_connection_types_for_upload_values">
+    <item>wifi</item>
+    <item>3g</item>
+  </string-array>
+  
+  <string name="preference_upload_when_plugged_in_only">
+    preference_upload_when_plugged_in_only
+  </string>
+  <string name="preference_title_upload_when_plugged_in_only">
+    Upload only when charging?
+  </string>
+  <string name="preference_summary_upload_when_plugged_in_only">
+    If selected, videos will only be uploaded when the phone is plugged
+    in and charging
+  </string>
+  
+  <string name="activity_home_camera_button_text">Record</string>
+  <string name="activity_home_settings_button_text">Settings</string>
+  <string name="activity_home_my_videos_button_text">Review</string>
+  <string name="activity_home_logout_button_text">Logout</string>
+  <string name="activity_home_about_button_text">About</string>
+  <string name="activity_home_logout_message">Are you sure you wish to log out?</string>
+  <string name="activity_home_logout_yes">Yes</string>
+  <string name="activity_home_logout_no">No</string>
+  
+  <string name="activity_review_delete">Delete</string>
+  <string name="activity_review_upload">Upload</string>
+
+  <string name="numeric_0">0</string>
+  <string name="numeric_1">1</string>
+  <string name="numeric_2">2</string>
+  <string name="numeric_3">3</string>
+  <string name="numeric_4">4</string>
+  <string name="numeric_5">5</string>
+  <string name="numeric_6">6</string>
+  <string name="numeric_7">7</string>
+  <string name="numeric_8">8</string>
+  <string name="numeric_9">9</string>
+  
+  <string name="activity_camera_click_to_tag_text">Recording, click anywhere to tag</string>
+  <string name="activity_camera_submit_tag_text">SPOT</string>
+  <string name="activity_camera_submit_hottag_text">HOTSPOT</string> 
+
+</resources>

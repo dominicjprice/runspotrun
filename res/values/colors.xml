@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <color name="highlight">#F39C13</color>
+    
+    <color name="inverse_highlight">@android:color/white</color>
+    
+    <color name="light">#323333</color>
+    
+    <color name="dark">#2E2F2F</color>
+    
+</resources>
