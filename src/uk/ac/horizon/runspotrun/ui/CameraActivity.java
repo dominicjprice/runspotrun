@@ -164,7 +164,11 @@ extends Activity {
 			
 			private void stopRecording() {
 				if(recorder != null) {
-					recorder.stop();
+					try {
+						recorder.stop();
+					} catch(Exception e) { 
+						Log.e(Constants.LOG_TAG, "Unable to stop the camera");
+					}
 					recorder.reset();
 					recorder.release();
 					videoEntry.endTime = new Date();
@@ -263,20 +267,18 @@ extends Activity {
 		if(cameraHandler != null) 
 			cameraHandler.sendEmptyMessage(START_RECORDING);
 		view.setVisibility(View.INVISIBLE);
-		findViewById(R.id.recordingBar).setVisibility(View.VISIBLE); 
+		setVisible(findViewById(R.id.recordingBar));
 		final View layout = findViewById(R.id.cameraActivityLayout);
 		layout.setOnClickListener(new View.OnClickListener() {
 			private boolean toggleSwitch = true;
 			@Override
 			public void onClick(View v) {
 				if(toggleSwitch) {
-					//findViewById(R.id.stopButton).setVisibility(View.VISIBLE);
-					findViewById(R.id.keypad).setVisibility(View.VISIBLE);
+					setVisible(findViewById(R.id.keypad));
 					findViewById(R.id.recordingBar).setVisibility(View.INVISIBLE);
 				} else {
-					//findViewById(R.id.stopButton).setVisibility(View.INVISIBLE);
 					findViewById(R.id.keypad).setVisibility(View.INVISIBLE);
-					findViewById(R.id.recordingBar).setVisibility(View.VISIBLE);
+					setVisible(findViewById(R.id.recordingBar));
 					EditText et = (EditText)findViewById(R.id.tagEntryField);
 					et.setText("");
 				}
@@ -292,15 +294,14 @@ extends Activity {
 		
 		findViewById(R.id.keypad).setVisibility(View.INVISIBLE);
 		findViewById(R.id.recordingBar).setVisibility(View.INVISIBLE);
-		findViewById(R.id.recordButton).setVisibility(View.VISIBLE);
+		setVisible(findViewById(R.id.recordButton));
 		final View layout = findViewById(R.id.cameraActivityLayout);
 		layout.setOnClickListener(null);
 	}
 	
 	public void onClickHotTagButton(View view) {
 		Toast.makeText(this, "Hot spot submitted", Toast.LENGTH_SHORT).show();
-		findViewById(R.id.recordingBar).setVisibility(View.VISIBLE);
-		//findViewById(R.id.stopButton).setVisibility(View.INVISIBLE);
+		setVisible(findViewById(R.id.recordingBar));
 		findViewById(R.id.keypad).setVisibility(View.INVISIBLE);
 		
 		submitRunnerTag("-99");
@@ -311,13 +312,11 @@ extends Activity {
 			@Override
 			public void onClick(View v) {
 				if(toggleSwitch) {
-					//findViewById(R.id.stopButton).setVisibility(View.VISIBLE);
-					findViewById(R.id.keypad).setVisibility(View.VISIBLE);
+					setVisible(findViewById(R.id.keypad));
 					findViewById(R.id.recordingBar).setVisibility(View.INVISIBLE);
 				} else {
-					//findViewById(R.id.stopButton).setVisibility(View.INVISIBLE);
 					findViewById(R.id.keypad).setVisibility(View.INVISIBLE);
-					findViewById(R.id.recordingBar).setVisibility(View.VISIBLE);
+					setVisible(findViewById(R.id.recordingBar));
 					EditText et = (EditText)findViewById(R.id.tagEntryField);
 					et.setText("");
 				}
@@ -346,22 +345,19 @@ extends Activity {
 		if(!et.getText().toString().equals(""))
 			submitRunnerTag(et.getText().toString());
 		et.setText("");
-		//findViewById(R.id.stopButton).setVisibility(View.INVISIBLE);
 		findViewById(R.id.keypad).setVisibility(View.INVISIBLE);
-		findViewById(R.id.recordingBar).setVisibility(View.VISIBLE);
+		setVisible(findViewById(R.id.recordingBar));
 		final View layout = findViewById(R.id.cameraActivityLayout);
 		layout.setOnClickListener(new View.OnClickListener() {
 			private boolean toggleSwitch = true;
 			@Override
 			public void onClick(View v) {
 				if(toggleSwitch) {
-					//findViewById(R.id.stopButton).setVisibility(View.VISIBLE);
-					findViewById(R.id.keypad).setVisibility(View.VISIBLE);
+					setVisible(findViewById(R.id.keypad));
 					findViewById(R.id.recordingBar).setVisibility(View.INVISIBLE);
 				} else {
-					//findViewById(R.id.stopButton).setVisibility(View.INVISIBLE);
 					findViewById(R.id.keypad).setVisibility(View.INVISIBLE);
-					findViewById(R.id.recordingBar).setVisibility(View.VISIBLE);
+					setVisible(findViewById(R.id.recordingBar));
 					EditText et = (EditText)findViewById(R.id.tagEntryField);
 					et.setText("");
 				}
@@ -468,6 +464,11 @@ extends Activity {
 				return null;
 			}
 		}).execute(null, null);
+	}
+	
+	private void setVisible(View v) {
+		v.setVisibility(View.VISIBLE);
+		v.bringToFront();
 	}
 	
 }
