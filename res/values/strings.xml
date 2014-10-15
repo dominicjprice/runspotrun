@@ -65,6 +65,8 @@
   
   <string name="activity_review_delete">Delete</string>
   <string name="activity_review_upload">Upload</string>
+  <string name="activity_review_uploading">Uploading</string>
+  <string name="activity_review_uploaded">Uploaded</string>
 
   <string name="numeric_0">0</string>
   <string name="numeric_1">1</string>

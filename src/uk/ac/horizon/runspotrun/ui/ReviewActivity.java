@@ -1,6 +1,7 @@
 package uk.ac.horizon.runspotrun.ui;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.util.List;
 
 import uk.ac.horizon.runspotrun.Constants;
@@ -27,10 +28,16 @@ import android.content.Intent;
 public class ReviewActivity 
 extends Activity {
 
+	private Method setAlphaMethod = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_review);
+		
+		try {
+			setAlphaMethod = View.class.getMethod("setAlpha", float.class);
+		} catch (NoSuchMethodException e) {}
 	}
 
 	@Override
@@ -84,12 +91,10 @@ extends Activity {
 							MediaStore.Video.Thumbnails.MINI_KIND);
 					
 					thumb.setImageBitmap(bmp);
-					thumb.setAlpha(0.75f);
+					setAlpha(thumb, 0.75f);
 					thumb.setBackgroundResource(R.drawable.activity_review_button);
-					//thumb.setPadding(5, 0, 5, 0);
 					TableRow.LayoutParams lp = (TableRow.LayoutParams)row1.generateLayoutParams(null);
 					lp.span = 2;
-					//lp.width = bmp.getWidth();
 					lp.weight = 0.5f;
 					thumb.setLayoutParams(lp);
 					row1.addView(thumb);
@@ -110,7 +115,7 @@ extends Activity {
 					delete.setTextColor(getResources().getColorStateList(R.color.activity_review_button));
 					delete.setHeight(pixels);
 					delete.setPadding(5, 0, 5, 0);
-					delete.setAlpha(0.75f);
+					setAlpha(delete, 0.75f);
 					delete.setOnClickListener(new View.OnClickListener() {
 						
 						@Override
@@ -136,24 +141,24 @@ extends Activity {
 					});
 					lp = (TableRow.LayoutParams)row2.generateLayoutParams(null);
 					lp.span = 1;
-					//lp.width = bmp.getWidth();
 					lp.weight = 0.25f;
 					delete.setLayoutParams(lp);
 					row2.addView(delete);
 					
 					if(!entry.uploaded && !entry.canUpload) {
-						Button upload = new Button(ReviewActivity.this);
+						final Button upload = new Button(ReviewActivity.this);
 						upload.setBackgroundResource(R.drawable.activity_review_button);
 						upload.setTextColor(getResources().getColorStateList(R.color.activity_review_button));
 						upload.setText(R.string.activity_review_upload);
 						upload.setHeight(pixels);
-						upload.setAlpha(0.75f);
+						setAlpha(upload, 0.75f);
 						upload.setPadding(5, 0, 5, 0);
 						upload.setOnClickListener(new View.OnClickListener() {
 							
 							@Override
 							public void onClick(View v) {
-								row2.removeView(v);		
+								upload.setOnClickListener(null);
+								upload.setText(R.string.activity_review_uploading);
 								(new AsyncTask<Void, Void, Void>() {
 
 									@Override
@@ -170,6 +175,26 @@ extends Activity {
 						});
 						upload.setLayoutParams(lp);
 						row2.addView(upload);
+					} else if(!entry.uploaded && entry.canUpload) {
+						final Button uploading = new Button(ReviewActivity.this);
+						uploading.setBackgroundResource(R.drawable.activity_review_button);
+						uploading.setTextColor(getResources().getColorStateList(R.color.activity_review_button));
+						uploading.setText(R.string.activity_review_uploading);
+						uploading.setHeight(pixels);
+						setAlpha(uploading, 0.75f);
+						uploading.setPadding(5, 0, 5, 0);
+						uploading.setLayoutParams(lp);
+						row2.addView(uploading);
+					} else {
+						final Button uploaded = new Button(ReviewActivity.this);
+						uploaded.setBackgroundResource(R.drawable.activity_review_button);
+						uploaded.setTextColor(getResources().getColorStateList(R.color.activity_review_button));
+						uploaded.setText(R.string.activity_review_uploaded);
+						uploaded.setHeight(pixels);
+						setAlpha(uploaded, 0.75f);
+						uploaded.setPadding(5, 0, 5, 0);
+						uploaded.setLayoutParams(lp);
+						row2.addView(uploaded);
 					}
 					
 					TableLayout tl = new TableLayout(ReviewActivity.this);
@@ -183,6 +208,14 @@ extends Activity {
 			}
 			
 		}).execute(null, null);
+	}
+	
+	private void setAlpha(View view, float alpha) {
+		if(setAlphaMethod == null)
+			return;
+		try {
+			setAlphaMethod.invoke(view, Float.valueOf(alpha));
+		} catch (Exception e) {} 
 	}
 
 }

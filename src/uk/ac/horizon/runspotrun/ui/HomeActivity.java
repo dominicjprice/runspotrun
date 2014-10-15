@@ -1,6 +1,8 @@
 package uk.ac.horizon.runspotrun.ui;
 
 import uk.ac.horizon.runspotrun.R;
+import uk.ac.horizon.runspotrun.service.LogUploader;
+import uk.ac.horizon.runspotrun.service.VideoUploader;
 import android.os.Bundle;
 import android.view.View;
 import android.app.Activity;
@@ -13,6 +15,13 @@ extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		startService(new Intent(this, LogUploader.class));
+		startService(new Intent(this, VideoUploader.class));
 	}
 	
 	public void onClickShowSettings(View view) {
