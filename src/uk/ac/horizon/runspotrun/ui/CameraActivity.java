@@ -41,6 +41,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+@SuppressWarnings("deprecation")
 public class CameraActivity 
 extends Activity {
 	
@@ -60,7 +61,6 @@ extends Activity {
 	private String filename = null;
 	private String deviceID = null;	
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

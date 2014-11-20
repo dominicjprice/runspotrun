@@ -3,6 +3,9 @@ package uk.ac.horizon.runspotrun.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Locale;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -74,7 +77,7 @@ extends Activity {
 						
 						@Override
 						public boolean shouldOverrideUrlLoading(WebView view, String url) {
-							if(url.toLowerCase().startsWith("mailto")) {
+							if(url.toLowerCase(Locale.getDefault()).startsWith("mailto")) {
 								Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 					            startActivity(i);
 								return true;
@@ -119,7 +122,12 @@ extends Activity {
 						buf = new StringBuilder();
 						buf.append("An error occurred, please go back and try again.");
 					}
-					view.loadData(buf.toString(), "text/html", "UTF-8");
+					try {
+						view.loadData(URLEncoder.encode(buf.toString(), "UTF-8").replaceAll("\\+"," "),
+								"text/html", "UTF-8");
+					} catch (UnsupportedEncodingException e) {
+						Log.e(Constants.LOG_TAG, e.getMessage(), e);
+					}
 				}
 			}
 

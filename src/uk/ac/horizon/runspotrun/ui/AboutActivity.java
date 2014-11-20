@@ -3,10 +3,14 @@ package uk.ac.horizon.runspotrun.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
+import uk.ac.horizon.runspotrun.Constants;
 import uk.ac.horizon.runspotrun.R;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -49,7 +53,12 @@ extends Activity {
 				v.setVisibility(View.VISIBLE);
 			}
 		});
-		v.loadData(buf.toString(), "text/html", "UTF-8");
+		try {
+			v.loadData(URLEncoder.encode(buf.toString(), "UTF-8").replaceAll("\\+"," "),
+					"text/html", "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			Log.e(Constants.LOG_TAG, e.getMessage(), e);
+		}
 	}
 
 }

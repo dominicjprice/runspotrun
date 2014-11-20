@@ -75,6 +75,7 @@ extends IntentService {
 					if(code > 199 && code < 300) {
 						Log.d(Constants.LOG_TAG, "Log entry uploaded successfully");
 						dao.markAsUploaded(entry);
+						// TODO: Check for auth errors, these are re-tryable 401 and 403?
 					} else {
 						Log.w(Constants.LOG_TAG, "Log entry upload failed, reason: ("
 								+ code + ") " + r.getStatusLine().getReasonPhrase());
