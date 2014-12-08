@@ -5,7 +5,7 @@
     android:id="@+id/cameraActivityLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CameraActivity">
+    tools:context=".ActivityCamera">
 
   <SurfaceView
       android:id="@+id/cameraView"
@@ -90,7 +90,7 @@
           android:alpha="0.75"
           android:layout_marginBottom="5dp">
           
-        <EditText
+        <uk.ac.horizon.runspotrun.ui.view.RunnerTagEditText
             android:id="@+id/tagEntryField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
     </TableRow>
 
     <TableRow
-    	android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
       
       <Button
@@ -182,7 +182,7 @@
     </TableRow>
     
     <TableRow
-    	android:layout_width="wrap_content"
+    	  android:layout_width="wrap_content"
         android:layout_height="wrap_content">
       
       <Button
@@ -208,11 +208,11 @@
       
     </TableRow>
     
-	<TableRow
-	    android:layout_width="wrap_content"
+	  <TableRow
+	      android:layout_width="wrap_content"
         android:layout_height="wrap_content">
       
-	  <Button
+	    <Button
           style="@style/activity_camera_button_keypad"
           android:alpha="0.75"
           android:background="@drawable/activity_camera_button_keypad_bottom_left"
@@ -220,7 +220,7 @@
           android:tag="0"
           android:text="@string/numeric_0" />
 	    
-	  <Button
+	    <Button
           style="@style/activity_camera_button_keypad"
           android:alpha="0.75"
           android:layout_span="2"
@@ -228,10 +228,10 @@
           android:onClick="onClickSubmitTag"
           android:text="@string/activity_camera_submit_tag_text" />
 	  
-	</TableRow>
+	  </TableRow>
 
     <TableRow
-    	android:layout_width="wrap_content"
+    	  android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
       <Button

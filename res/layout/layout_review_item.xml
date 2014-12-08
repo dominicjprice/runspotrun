@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:runspotrun="http://www.runspotrun.co.uk/dev/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+  <TableRow>
+  
+    <ImageButton
+        style="@style/activity_review_button"
+        android:id="@+id/activity_review_thumbnail_button"
+        android:alpha="0.75"
+        android:layout_span="2"
+        android:layout_weight="0.5"
+        android:contentDescription="@string/activity_review_thumbnail_button_text" />
+    
+  </TableRow>
+  
+  <TableRow>
+      
+    <Button
+		style="@style/activity_settings_button"
+		android:id="@+id/activity_review_delete_button"
+		android:alpha="0.75"
+		android:layout_span="1"
+		android:layout_weight="0.5"
+	    android:text="@string/activity_review_delete" />
+  	
+  	<Button
+		style="@style/activity_settings_button"
+		android:id="@+id/activity_review_upload_button"
+		android:alpha="0.75"
+		android:layout_span="1"
+		android:layout_weight="0.5" />
+    
+  </TableRow>
+    
+</TableLayout>

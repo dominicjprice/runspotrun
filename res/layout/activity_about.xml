@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    style="@style/default_theme">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:runspotrun="http://www.runspotrun.co.uk/dev/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/default_theme"
+    tools:context=".ActivityAbout" >
+  
+  <LinearLayout
+      android:id="@+id/activity_about_button_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentRight="true" >
 
-  <WebView 
-      android:id="@+id/activity_about_web_view"
+	<Button
+		style="@style/activity_about_button"
+		android:alpha="0.75"
+	    android:text="@string/activity_about_close_button_text"
+	    android:onClick="onClickClose" />
+    
+  </LinearLayout>
+  
+  <uk.ac.horizon.runspotrun.ui.view.AssetWebView  
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
-      android:visibility="invisible" />
+      android:layout_alignParentTop="true"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentRight="true"
+      android:layout_above="@id/activity_about_button_bar"
+      android:alpha="0.75"
+      runspotrun:resource="about.html" />
 
-</LinearLayout>
+</RelativeLayout>

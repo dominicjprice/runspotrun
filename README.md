@@ -32,8 +32,13 @@ Horizon Digital Economy Research, The University of Nottingham
       and is licensed under the Apache 2.0 license available at 
       http://www.apache.org/licenses/LICENSE-2.0.
     
-    - The Jackson Core library (libs/jackson-core-2.4.1.1.jar) is licensed under
+    - The Jackson Core (libs/jackson-core-2.4.1.1.jar), Jackson Annotations
+      (libs/jackson-annotations-2.4.1.jar) and Jackson Databind
+      (libs/jackson-databind-2.4.1.1.jar) libraries are licensed under
       the Apache 2.0 license available at http://www.apache.org/licenses/LICENSE-2.0.
+      
+    - The Android-JSON-RPC library (libs/android-json-rpc-0.3.4.jar) is licensed under
+      the MIT license available at http://opensource.org/licenses/mit-license.php.
     
     - res/drawable/background_logo.png and res/drawable/logo.png (which have been 
       modified in size and color), icons made by Freepik (http://www.freepik.com) available at 

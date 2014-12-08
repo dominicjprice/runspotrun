@@ -6,32 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/default_theme"
-    tools:context=".ActivityAbout" >
-  
+    tools:context=".ActivityLaunch" >
+    
   <LinearLayout
-      android:id="@+id/activity_logon_button_bar"
+      android:id="@+id/activity_launch_button_bar"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
       android:layout_alignParentLeft="true"
       android:layout_alignParentRight="true" >
 
-	<Button
-		style="@style/activity_logon_button"
+    <Button
+        style="@style/activity_launch_button"
+        android:text="@string/activity_launch_cancel_button_text"
 		android:alpha="0.75"
-	    android:text="@string/activity_logon_close_button_text"
-	    android:onClick="onClickClose" />
+        android:onClick="onClickDisagree" />
+
+    <Button
+        style="@style/activity_launch_button"
+		android:alpha="0.75"
+        android:text="@string/activity_launch_confirm_button_text"
+        android:onClick="onClickAgree" />
     
   </LinearLayout>
   
-  <uk.ac.horizon.runspotrun.ui.view.LogonWebView 
-      android:id="@+id/logon_web_view"
+  <uk.ac.horizon.runspotrun.ui.view.AssetWebView 
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
       android:layout_alignParentTop="true"
       android:layout_alignParentLeft="true"
       android:layout_alignParentRight="true"
-      android:layout_above="@id/activity_logon_button_bar"
-      android:alpha="0.75" />
+      android:layout_above="@id/activity_launch_button_bar"
+      android:alpha="0.75"
+      runspotrun:resource="consent.html" />
 
 </RelativeLayout>

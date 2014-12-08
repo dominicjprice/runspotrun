@@ -4,6 +4,8 @@
   <string name="app_name">RunSpotRun</string>
   <string name="activity_title_about">RunSpotRun | About</string>
   <string name="activity_title_home">RunSpotRun | Home</string>
+  <string name="activity_title_launch">RunSpotRun</string>
+  <string name="activity_title_logon">RunSpotRun | Logon</string>
   <string name="activity_title_review">RunSpotRun | Review</string>
   <string name="activity_title_settings">RunSpotRun | Settings</string>
         
@@ -57,17 +59,25 @@
   <string name="activity_home_camera_button_text">Record</string>
   <string name="activity_home_settings_button_text">Settings</string>
   <string name="activity_home_my_videos_button_text">Review</string>
-  <string name="activity_home_logout_button_text">Logout</string>
   <string name="activity_home_about_button_text">About</string>
-  <string name="activity_home_logout_message">Are you sure you wish to log out?</string>
-  <string name="activity_home_logout_yes">Yes</string>
-  <string name="activity_home_logout_no">No</string>
+  <string name="activity_home_logon_button_text">Logon</string>
+  <string name="activity_home_not_logged_in_text">You are not logged in</string>
+  
+  <string name="activity_launch_cancel_button_text">I Do Not Agree</string>
+  <string name="activity_launch_confirm_button_text">I Agree</string>
+  
+  <string name="activity_about_close_button_text">Close</string>
   
   <string name="activity_review_delete">Delete</string>
   <string name="activity_review_upload">Upload</string>
-  <string name="activity_review_uploading">Uploading</string>
+  <string name="activity_review_upload_pending">Pending Upload</string>
+  <string name="activity_review_uploading">%s%% Uploaded</string>
   <string name="activity_review_uploaded">Uploaded</string>
+  <string name="activity_review_close_button_text">Close</string>
+  <string name="activity_review_thumbnail_button_text">View video</string>  
 
+  <string name="activity_settings_close_button_text">Close</string>
+  
   <string name="numeric_0">0</string>
   <string name="numeric_1">1</string>
   <string name="numeric_2">2</string>
@@ -79,8 +89,24 @@
   <string name="numeric_8">8</string>
   <string name="numeric_9">9</string>
   
-  <string name="activity_camera_click_to_tag_text">Recording, click anywhere to tag</string>
+  <string name="activity_camera_click_to_tag_text">
+      Recording, click anywhere to tag
+  </string>
   <string name="activity_camera_submit_tag_text">SPOT</string>
   <string name="activity_camera_submit_hottag_text">HOTSPOT</string> 
+  <string name="activity_camera_tag_submitted_text">Spot Submitted</string> 
+  <string name="activity_camera_hottag_submitted_text">
+      Hot Spot Submitted
+  </string>
+  <string name="activity_camera_recording_started_text">
+      Recording Started
+  </string>  
+  
+  <string name="activity_logon_success_text">Logon was successful</string>
+  <string name="activity_logon_failure_text">Logon was unsuccessful</string>
+  <string name="activity_logon_close_button_text">Close</string>
+  <string name="activity_logon_no_network_text">
+      Network is not connected
+  </string>
 
 </resources>

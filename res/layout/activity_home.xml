@@ -5,7 +5,7 @@
     style="@style/default_theme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".ActivityHome">
 	
   <LinearLayout
       android:layout_width="match_parent"
@@ -60,10 +60,31 @@
         android:onClick="onClickShowAbout" />
     
     <LinearLayout 
+        android:id="@+id/activity_home_logon_button"
         android:layout_width="match_parent"
-        android:layout_height="2dip"
-        android:background="@color/light" />
-	
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+      <LinearLayout 
+          android:layout_width="match_parent"
+          android:layout_height="2dip"
+          android:background="@color/light" />
+    
+      <Button
+          style="@style/activity_home_button"
+          android:text="@string/activity_home_logon_button_text"
+          android:drawableLeft="@drawable/activity_home_button_logon"
+          android:alpha="0.75"
+          android:onClick="onClickLogon" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAppearance="?android:attr/textAppearanceLarge"
+          android:text="@string/activity_home_not_logged_in_text" />
+        
+    </LinearLayout>
+    	
   </LinearLayout>
 	
 </ScrollView>
