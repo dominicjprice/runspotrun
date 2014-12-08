@@ -222,9 +222,6 @@ extends Activity {
 					videoEntry.startTime = new Date();					
 					videoEntry.canUpload = false;					
 					videoEntry.uploaded = false;
-					
-					insertVideoLogEntry(videoEntry.startTime, filename);
-					
 					camera.unlock();
 					recorder = Camcorder.createConfiguredRecorder(
 							camera, tmp.getAbsolutePath());
@@ -254,6 +251,7 @@ extends Activity {
 							catch(InterruptedException e) { }
 					}
 					videoService.addVideo(videoEntry);
+					insertVideoLogEntry(videoEntry);
 					videoEntry = null;
 					recorder = null;
 					filename = null;
@@ -479,12 +477,15 @@ extends Activity {
 		insertLogEntry("positionupdate", now, data);
 	}
 	
-	private void insertVideoLogEntry(Date starttime, String filename) {
+	private void insertVideoLogEntry(EntryVideo entry) {
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("guid", filename);
-		data.put("start_time", LOG_ENTRY_DATE_FORMAT.format(starttime));
+		data.put("start_time", LOG_ENTRY_DATE_FORMAT.format(entry.startTime));
+		data.put("end_time", LOG_ENTRY_DATE_FORMAT.format(entry.endTime));
+		data.put("duration", 
+				entry.endTime.getTime() - entry.startTime.getTime());
 		data.put("url", filename);
-		insertLogEntry("video", starttime, data);
+		insertLogEntry("video", entry.startTime, data);
 	}
 	
 	private void insertLogEntry(
