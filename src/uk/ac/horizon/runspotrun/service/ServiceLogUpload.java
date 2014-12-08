@@ -1,10 +1,16 @@
 package uk.ac.horizon.runspotrun.service;
 
+import java.util.Map;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import uk.ac.horizon.runspotrun.app.AccessToken;
 import uk.ac.horizon.runspotrun.app.Log;
@@ -103,14 +109,41 @@ extends Service {
 			if(ni == null || !ni.isConnectedOrConnecting())
 				return ServiceMonitor.Reason.REQUIRE_NETWORK;
 			
-			upload(accessToken, entry);
+			if(entry.isUpdate)
+				update(accessToken, entry);
+			else
+				insert(accessToken, entry);
 		}
 		return ServiceMonitor.Reason.UPLOAD_COMPLETE;
 	}
 	
-	public void upload(AccessToken accessToken, EntryLog entry) {
-		Log.d("Uploading log entry: " + entry.endpoint + " - " + entry.data);
-		HttpPost p = new HttpPost(Urls.API(entry.endpoint, accessToken.get()));
+	private void insert(AccessToken accessToken, EntryLog entry) {
+		Log.d("Inserting log entry: " + entry.endpoint + " - " + entry.data);
+		upload(new HttpPost(Urls.API(entry.endpoint, accessToken.get())),
+				accessToken, entry);
+	}
+	
+	private void update(AccessToken accessToken, EntryLog entry) {
+		Log.d("Updating log entry: " + entry.endpoint + " - " + entry.data);
+		ObjectMapper mapper = new ObjectMapper();
+		String guid;
+		try {
+			@SuppressWarnings("unchecked")
+			Map<String, Object> data = mapper.readValue(entry.data, Map.class);
+			guid = (String)data.get("guid");
+		} catch(Exception e) {
+			dao.markAsUploadFailed(entry);
+			return;
+		}
+		upload(new HttpPut(Urls.API(
+						entry.endpoint, "guid/" + guid, accessToken.get())),
+				accessToken, entry);
+	}
+	
+	private void upload(
+			HttpEntityEnclosingRequestBase p,
+			AccessToken accessToken,
+			EntryLog entry) {
 		p.setHeader("Accept", "application/json");
 		p.setHeader("Content-Type", "application/json");
 		p.setHeader("Referer", Urls.API("", accessToken.get()));

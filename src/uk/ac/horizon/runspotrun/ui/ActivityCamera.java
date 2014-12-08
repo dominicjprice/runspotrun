@@ -479,12 +479,16 @@ extends Activity {
 	
 	private void insertVideoLogEntry(EntryVideo entry) {
 		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("guid", filename);
+		Location location = locationObserver.getCurrentLocation();
+		data.put("guid", entry.filename);
 		data.put("start_time", LOG_ENTRY_DATE_FORMAT.format(entry.startTime));
 		data.put("end_time", LOG_ENTRY_DATE_FORMAT.format(entry.endTime));
 		data.put("duration", 
 				entry.endTime.getTime() - entry.startTime.getTime());
-		data.put("url", filename);
+		data.put("filename", entry.filename);
+		data.put("accuracy", location.getAccuracy());
+		data.put("latitude", location.getLatitude());
+		data.put("longitude", location.getLongitude());
 		insertLogEntry("video", entry.startTime, data);
 	}
 	
@@ -513,6 +517,7 @@ extends Activity {
 				entry.endpoint = endpoint;
 				entry.uploaded = false;
 				entry.timestamp = date;
+				entry.isUpdate = false;
 				logService.insert(entry);				
 			}
 		}).start();

@@ -81,4 +81,17 @@ public class Urls {
 		}
 	}
 	
+	public static String API(String endpoint, String id, String accessToken) {
+		try {
+			String query = "oauth_consumer_key=" 
+					+ URLEncoder.encode(accessToken, "UTF-8")
+					+ "&format=json" ;
+			return new URI(scheme, hostname, 
+					apipath + endpoint + "/" + id + "/", query, "").toString(); 
+		} catch (Exception e) {
+			Log.e(e);
+			throw new RuntimeException(e); // UNCAUGHT
+		}
+	}
+	
 }

@@ -9,7 +9,7 @@ extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "runspotrun";
 	
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 4;
 	
 	private static final String CREATE_LOG_TABLE =
 			"CREATE TABLE " + DAOEntryLog.TABLE_NAME + " ("
@@ -19,7 +19,8 @@ extends SQLiteOpenHelper {
 			+ "data TEXT NOT NULL, "
 			+ "uploaded INTEGER NOT NULL, "
 			+ "upload_retries INTEGER NOT NULL, "
-			+ "upload_failed INTEGER NOT NULL"
+			+ "upload_failed INTEGER NOT NULL, "
+			+ "is_update INTEGER NOT NULL"
 			+ ");";
 	
 	private static final String CREATE_VIDEO_TABLE =
@@ -52,6 +53,9 @@ extends SQLiteOpenHelper {
 				}, {
 					"DROP TABLE " + DAOEntryVideo.TABLE_NAME,
 					CREATE_VIDEO_TABLE
+				}, {
+					"ALTER TABLE " + DAOEntryLog.TABLE_NAME 
+					+ " ADD is_update INTEGER NOT NULL DEFAULT 0"
 				}
 		};
 		for(int i = oldVersion - 1; i < alterStatments.length; i++) {

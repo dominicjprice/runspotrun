@@ -25,6 +25,7 @@ extends DAO {
 		values.put("uploaded", entry.uploaded ? 1 : 0);
 		values.put("upload_retries", entry.uploadRetries);
 		values.put("upload_failed", entry.uploadFailed ? 1 : 0);
+		values.put("is_update", entry.isUpdate ? 1 : 0);
 		writeQueue.submit(new WriteTask() {
 			@Override
 			public void task() {
@@ -79,6 +80,7 @@ extends DAO {
 		values.put("uploaded", entry.uploaded ? 1 : 0);
 		values.put("upload_retries", entry.uploadRetries);
 		values.put("upload_failed", entry.uploadFailed ? 1 : 0);
+		values.put("is_update", entry.isUpdate ? 1 : 0);
 		writeQueue.submit(new WriteTask() {
 			@Override
 			public void task() {
@@ -96,6 +98,7 @@ extends DAO {
 		e.uploaded = c.getLong(4) != 0L;
 		e.uploadRetries = c.getInt(5);
 		e.uploadFailed = c.getLong(6) != 0L;
+		e.isUpdate = c.getLong(7) != 0L;
 		return e;
 	}
 	

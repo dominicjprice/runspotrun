@@ -17,5 +17,7 @@ public class EntryLog {
 	public int uploadRetries = 0;
 	
 	public boolean uploadFailed = false;
+	
+	public boolean isUpdate = false;
 
 }
