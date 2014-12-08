@@ -42,7 +42,7 @@ Horizon Digital Economy Research, The University of Nottingham
     
     - res/drawable/background_logo.png and res/drawable/logo.png (which have been 
       modified in size and color), icons made by Freepik (http://www.freepik.com) available at 
-      http://www.flaticon.com/free-icon/winner-cutting-the-finish-line-ribbon_10597 
+      http://www.flaticon.com/free-icon/running-at-finish-line_18143
       are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
     
     - res/drawable/activity_camera_button_hotspot_image.png (which has been modified
