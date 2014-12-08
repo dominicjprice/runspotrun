@@ -76,7 +76,7 @@ extends Activity {
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service) {	
 			synchronized(SERVICE_LOCK) {
-				videoService = (ServiceVideoUpload.VideoUploadBinder)service;
+				videoService = (ServiceVideoUpload.BinderServiceVideoUpload)service;
 				SERVICE_LOCK.notifyAll();
 			}
 		}
@@ -91,7 +91,7 @@ extends Activity {
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			synchronized(SERVICE_LOCK) {
-				logService = (ServiceLogUpload.LogUploadBinder)service;
+				logService = (ServiceLogUpload.BinderServiceLogUpload)service;
 				SERVICE_LOCK.notifyAll();
 			}
 		}
@@ -107,9 +107,9 @@ extends Activity {
 	
 	private String deviceID = null;
 	
-	private ServiceVideoUpload.VideoUploadBinder videoService;
+	private ServiceVideoUpload.BinderServiceVideoUpload videoService;
 	
-	private ServiceLogUpload.LogUploadBinder logService;
+	private ServiceLogUpload.BinderServiceLogUpload logService;
 	
 	private RunnerTagEditText tagEntryField;
 	

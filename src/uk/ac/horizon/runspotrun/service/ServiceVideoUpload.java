@@ -7,7 +7,10 @@ import java.io.FileInputStream;
 import java.net.URI;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import org.json.JSONObject;
 
 import com.microsoft.azure.storage.blob.BlockEntry;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
@@ -17,6 +20,7 @@ import uk.ac.horizon.runspotrun.app.App;
 import uk.ac.horizon.runspotrun.app.Log;
 import uk.ac.horizon.runspotrun.hardware.BatteryMonitor;
 import uk.ac.horizon.runspotrun.net.JsonRpc;
+import uk.ac.horizon.runspotrun.service.ServiceLogUpload.BinderServiceLogUpload;
 import uk.ac.horizon.runspotrun.service.ServiceMonitor.BinderServiceMonitor;
 import android.content.ComponentName;
 import android.content.Context;
@@ -34,11 +38,15 @@ extends Service {
 
 	public static final int BLOCK_SIZE_BYTES = 1024 * 1024 * 4; // 4MB
 	
+	private static int 
+			UPLOAD_STATUS_UPLOADING = 1,
+			UPLOAD_STATUS_UPLOADED = 2;
+	
 	public interface UploadProgressListener {
 		public void progressChanged(EntryVideo video);
 	}
 	
-	public class VideoUploadBinder 
+	public class BinderServiceVideoUpload 
 	extends Binder {
 		
 		public List<EntryVideo> listAllVideos() {
@@ -75,9 +83,11 @@ extends Service {
 	private final List<UploadProgressListener> listeners = 
 			new ArrayList<ServiceVideoUpload.UploadProgressListener>();
 	
-	private final VideoUploadBinder binder = new VideoUploadBinder();
+	private final BinderServiceVideoUpload binder = 
+			new BinderServiceVideoUpload();
 	
-	private final ServiceConnection connection = new ServiceConnection() {
+	private final ServiceConnection monitorConnection = 
+			new ServiceConnection() {
 		@Override
 		public void onServiceDisconnected(ComponentName name) {
 			serviceMonitor = null;
@@ -92,9 +102,27 @@ extends Service {
 		}
 	};
 	
+	private final ServiceConnection logUploadConnection = 
+			new ServiceConnection() {
+		@Override
+		public void onServiceDisconnected(ComponentName name) {
+			serviceLogUpload = null;
+		}
+		
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {	
+			synchronized(LOCK) {
+				serviceLogUpload = (BinderServiceLogUpload)service;
+				LOCK.notifyAll();
+			}
+		}
+	};
+	
 	private DAOEntryVideo dao;
 	
 	private BinderServiceMonitor serviceMonitor;
+	
+	private BinderServiceLogUpload serviceLogUpload;
 	
 	private ConnectivityManager connectivity;
 	
@@ -107,8 +135,11 @@ extends Service {
 		super.onCreate();
 		dao = new DAOEntryVideo(this);
 		if(!bindService(new Intent(this, ServiceMonitor.class), 
-				connection, Context.BIND_AUTO_CREATE))
+				monitorConnection, Context.BIND_AUTO_CREATE))
 			Log.w("Unable to bind to ServiceMonitor");
+		if(!bindService(new Intent(this, ServiceLogUpload.class),
+				logUploadConnection, Context.BIND_AUTO_CREATE))
+			Log.w("Unable to bind to ServiceLogUpload");		
 		connectivity = (ConnectivityManager)
 				getSystemService(CONNECTIVITY_SERVICE);
 	}
@@ -116,7 +147,14 @@ extends Service {
 	@Override 
 	public void onDestroy() {
 		super.onDestroy();
-		unbindService(connection);
+		if(serviceMonitor != null) {
+			unbindService(monitorConnection);
+			serviceMonitor = null;
+		}
+		if(serviceLogUpload != null) {
+			unbindService(logUploadConnection);
+			serviceLogUpload = null;
+		}
 	}
 	
 	@Override
@@ -127,7 +165,8 @@ extends Service {
 	@Override
 	protected void onHandleIntent(Intent intent) {
 		synchronized(LOCK) {
-			while(serviceMonitor == null)
+			while(serviceMonitor == null
+					&& serviceLogUpload == null)
 				try { LOCK.wait(); }
 				catch(InterruptedException e) { }
 		}
@@ -159,9 +198,13 @@ extends Service {
 				
 				JsonRpc rpc = new JsonRpc(new AccessToken(this).get());
 				try {
+					logVideoUploadStatus(
+							video.filename, UPLOAD_STATUS_UPLOADING);
 					String url = rpc.requestVideoUploadUrl(video.filename);
 					upload(video, url);
 					rpc.submitVideoEncodingJob(video.filename);
+					logVideoUploadStatus(
+							video.filename, UPLOAD_STATUS_UPLOADED);
 				} catch(Exception e) {
 					Log.w(e.getMessage(), e);
 					continue;
@@ -192,7 +235,6 @@ extends Service {
 		BufferedInputStream input = new BufferedInputStream(
 				new FileInputStream(file));
 		try {
-			
 			int id = 0;
 			if(blocks.size() > 0) {
 				id = decodeId(blocks.get(blocks.size() -1).getId()) + 1;
@@ -222,12 +264,30 @@ extends Service {
 	}
 	
 	private int decodeId(String id) {
-		return ByteBuffer.wrap(Base64.decode(id, Base64.NO_WRAP)).asIntBuffer().get();
+		return ByteBuffer.wrap(
+				Base64.decode(id, Base64.NO_WRAP)).asIntBuffer().get();
 	}
 	
 	private String encodeId(int id) {
 		return Base64.encodeToString(
 				ByteBuffer.allocate(4).putInt(id).array(), Base64.NO_WRAP);
+	}
+	
+	private void logVideoUploadStatus(String guid, int status) {
+		try {
+			JSONObject o = new JSONObject();
+			o.put("guid", guid);
+			o.put("upload_status", status);
+			EntryLog entry = new EntryLog();
+			entry.data = o.toString();
+			entry.endpoint = "video";
+			entry.uploaded = false;
+			entry.timestamp = new Date();
+			entry.isUpdate = true;
+			serviceLogUpload.insert(entry);
+		} catch(Exception e) {
+			Log.w("Error logging video upload status: " + e.getMessage(), e);
+		}
 	}
 	
 }

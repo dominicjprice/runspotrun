@@ -30,7 +30,7 @@ extends Service {
 
 	private static final int UPLOAD_MAX_TRIES = 10;
 	
-	public class LogUploadBinder 
+	public class BinderServiceLogUpload 
 	extends Binder {	
 		public void insert(EntryLog entry) {
 			dao.insert(entry);
@@ -40,7 +40,7 @@ extends Service {
 	
 	private final Object LOCK = new Object();
 		
-	private final LogUploadBinder binder = new LogUploadBinder();
+	private final BinderServiceLogUpload binder = new BinderServiceLogUpload();
 	
 	private final ServiceConnection connection = new ServiceConnection() {
 		@Override
@@ -153,7 +153,8 @@ extends Service {
 			p.setEntity(new StringEntity(entry.data, "UTF-8"));
 			HttpResponse r = c.execute(p);
 			int code = r.getStatusLine().getStatusCode();
-			r.getEntity().consumeContent();
+			if(r.getEntity() != null)
+				r.getEntity().consumeContent();
 			if(code > 199 && code < 300) {
 				Log.d("Log entry uploaded successfully");
 				dao.markAsUploaded(entry);

@@ -40,13 +40,13 @@ implements ServiceVideoUpload.UploadProgressListener {
 		
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service) {	
-			ActivityReview.this.service = (ServiceVideoUpload.VideoUploadBinder)service;
+			ActivityReview.this.service = (ServiceVideoUpload.BinderServiceVideoUpload)service;
 			ActivityReview.this.service.addListener(ActivityReview.this);
 			layout();
 		}
 	};
 	
-	private ServiceVideoUpload.VideoUploadBinder service;
+	private ServiceVideoUpload.BinderServiceVideoUpload service;
 	
 	private Map<Long, Button> buttons = new HashMap<Long, Button>();
 	
