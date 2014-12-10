@@ -6,7 +6,7 @@
   </style>
   
   <style name="activity_settings_theme" parent="@android:style/Theme.Black">        
-    <item name="android:textColorPrimary">@color/activity_settings_button</item>
+    <item name="android:textColorPrimary">@color/button</item>
     <item name="android:textColorSecondary">@color/inverse_highlight</item>
   </style>
     
@@ -14,7 +14,7 @@
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">wrap_content</item>
     <item name="android:background">@drawable/activity_home_button</item>
-    <item name="android:textColor">@color/activity_home_button</item>
+    <item name="android:textColor">@color/button</item>
     <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     <item name="android:paddingTop">5dp</item>
     <item name="android:paddingBottom">5dp</item>
@@ -28,7 +28,7 @@
     <item name="android:layout_height">fill_parent</item>
     <item name="android:layout_weight">0.5</item>
     <item name="android:background">@drawable/activity_launch_button</item>
-    <item name="android:textColor">@color/activity_launch_button</item>
+    <item name="android:textColor">@color/button</item>
     <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     <item name="android:paddingTop">5dp</item>
     <item name="android:paddingBottom">5dp</item>
@@ -41,7 +41,7 @@
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">fill_parent</item>
     <item name="android:background">@drawable/activity_about_button</item>
-    <item name="android:textColor">@color/activity_about_button</item>
+    <item name="android:textColor">@color/button</item>
     <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     <item name="android:paddingTop">5dp</item>
     <item name="android:paddingBottom">5dp</item>
@@ -54,7 +54,7 @@
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">fill_parent</item>
     <item name="android:background">@drawable/activity_logon_button</item>
-    <item name="android:textColor">@color/activity_logon_button</item>
+    <item name="android:textColor">@color/button</item>
     <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     <item name="android:paddingTop">5dp</item>
     <item name="android:paddingBottom">5dp</item>
@@ -67,7 +67,7 @@
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">fill_parent</item>
     <item name="android:background">@drawable/activity_review_button</item>
-    <item name="android:textColor">@color/activity_review_button</item>
+    <item name="android:textColor">@color/button</item>
     <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     <item name="android:paddingTop">5dp</item>
     <item name="android:paddingBottom">5dp</item>
@@ -80,7 +80,7 @@
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">fill_parent</item>
     <item name="android:background">@drawable/activity_settings_button</item>
-    <item name="android:textColor">@color/activity_settings_button</item>
+    <item name="android:textColor">@color/button</item>
     <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     <item name="android:paddingTop">5dp</item>
     <item name="android:paddingBottom">5dp</item>
@@ -93,7 +93,7 @@
     <item name="android:layout_width">75dp</item>
     <item name="android:layout_height">50dp</item>
     <item name="android:background">@drawable/activity_camera_button_keypad</item>
-    <item name="android:textColor">@color/activity_camera_button</item>
+    <item name="android:textColor">@color/button</item>
     <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
   </style>
     
