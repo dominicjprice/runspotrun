@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:runspotrun="http://www.runspotrun.co.uk/dev/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    style="@style/default_theme" >
 
   <TableRow>
   

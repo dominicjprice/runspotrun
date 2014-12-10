@@ -9,92 +9,60 @@
     <item name="android:textColorPrimary">@color/button</item>
     <item name="android:textColorSecondary">@color/inverse_highlight</item>
   </style>
-    
-  <style name="activity_home_button">
-    <item name="android:layout_width">fill_parent</item>
-    <item name="android:layout_height">wrap_content</item>
-    <item name="android:background">@drawable/activity_home_button</item>
+  
+  <style name="button">
+    <item name="android:background">@drawable/button</item>
     <item name="android:textColor">@color/button</item>
     <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     <item name="android:paddingTop">5dp</item>
     <item name="android:paddingBottom">5dp</item>
     <item name="android:paddingLeft">15dp</item>
-    <item name="android:paddingRight">15dp</item>
+    <item name="android:paddingRight">15dp</item>    
+  </style>
+    
+  <style name="activity_home_button" parent="@style/button">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
     <item name="android:gravity">right|center_vertical</item>
   </style>
   
-  <style name="activity_launch_button">
+  <style name="activity_launch_button" parent="@style/button">
     <item name="android:layout_width">0dp</item>
     <item name="android:layout_height">fill_parent</item>
     <item name="android:layout_weight">0.5</item>
-    <item name="android:background">@drawable/activity_launch_button</item>
-    <item name="android:textColor">@color/button</item>
-    <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
-    <item name="android:paddingTop">5dp</item>
-    <item name="android:paddingBottom">5dp</item>
-    <item name="android:paddingLeft">15dp</item>
-    <item name="android:paddingRight">15dp</item>
     <item name="android:gravity">center</item>
   </style>
   
-  <style name="activity_about_button">
+  <style name="activity_about_button" parent="@style/button">
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">fill_parent</item>
-    <item name="android:background">@drawable/activity_about_button</item>
-    <item name="android:textColor">@color/button</item>
-    <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
-    <item name="android:paddingTop">5dp</item>
-    <item name="android:paddingBottom">5dp</item>
-    <item name="android:paddingLeft">15dp</item>
-    <item name="android:paddingRight">15dp</item>
     <item name="android:gravity">center</item>
   </style>
   
-  <style name="activity_logon_button">
+  <style name="activity_logon_button" parent="@style/button">
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">fill_parent</item>
-    <item name="android:background">@drawable/activity_logon_button</item>
-    <item name="android:textColor">@color/button</item>
-    <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
-    <item name="android:paddingTop">5dp</item>
-    <item name="android:paddingBottom">5dp</item>
-    <item name="android:paddingLeft">15dp</item>
-    <item name="android:paddingRight">15dp</item>
     <item name="android:gravity">center</item>
   </style>
   
-  <style name="activity_review_button">
+  <style name="activity_review_button" parent="@style/button">
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">fill_parent</item>
-    <item name="android:background">@drawable/activity_review_button</item>
-    <item name="android:textColor">@color/button</item>
-    <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
-    <item name="android:paddingTop">5dp</item>
-    <item name="android:paddingBottom">5dp</item>
-    <item name="android:paddingLeft">15dp</item>
-    <item name="android:paddingRight">15dp</item>
     <item name="android:gravity">center</item>
   </style>
   
-  <style name="activity_settings_button">
+  <style name="activity_settings_button" parent="@style/button">
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">fill_parent</item>
-    <item name="android:background">@drawable/activity_settings_button</item>
-    <item name="android:textColor">@color/button</item>
-    <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
-    <item name="android:paddingTop">5dp</item>
-    <item name="android:paddingBottom">5dp</item>
-    <item name="android:paddingLeft">15dp</item>
-    <item name="android:paddingRight">15dp</item>
     <item name="android:gravity">center</item>
   </style>
   
-  <style name="activity_camera_button_keypad">
+  <style name="activity_camera_button_keypad" parent="@style/button">
     <item name="android:layout_width">75dp</item>
     <item name="android:layout_height">50dp</item>
-    <item name="android:background">@drawable/activity_camera_button_keypad</item>
-    <item name="android:textColor">@color/button</item>
-    <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    <item name="android:background">
+        @drawable/activity_camera_button_keypad
+    </item>
   </style>
     
 </resources>

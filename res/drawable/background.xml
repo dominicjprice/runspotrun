@@ -16,7 +16,8 @@
   <item>
     <bitmap
         android:src="@drawable/background_logo"
-        android:gravity="top" />    
+        android:gravity="center"
+        android:tileMode="disabled" />    
   </item>
   
 </layer-list>
