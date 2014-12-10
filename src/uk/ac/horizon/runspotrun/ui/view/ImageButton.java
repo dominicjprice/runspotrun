@@ -34,6 +34,7 @@ extends Button {
 		init(null);
 	}
 	
+	@SuppressWarnings("deprecation")
 	private void init(AttributeSet attrs) {
 		if(attrs != null) {
 			Drawable dl = getStateList(attrs, "drawableLeft");
@@ -41,6 +42,9 @@ extends Button {
 			Drawable dt = getStateList(attrs, "drawableTop");
 			Drawable db = getStateList(attrs, "drawableBottom");
 			setCompoundDrawablesWithIntrinsicBounds(dl, dt, dr, db);
+			Drawable b = getStateList(attrs, "background");
+			if(b != null)
+				this.setBackgroundDrawable(b);
 		}
 	}
 	

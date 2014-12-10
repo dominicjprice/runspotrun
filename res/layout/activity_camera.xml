@@ -2,6 +2,7 @@
 <RelativeLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:runspotrun="http://www.runspotrun.co.uk/dev/android"
     android:id="@+id/cameraActivityLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,15 +17,15 @@
       android:layout_alignParentRight="true"
       android:layout_alignParentTop="true" />
 
-  <Button
+  <uk.ac.horizon.runspotrun.ui.view.ImageButton
       android:id="@+id/recordButton"
       android:layout_width="268dp"
       android:layout_height="267dp"
       android:layout_centerHorizontal="true"
       android:layout_centerVertical="true"
-      android:background="@drawable/activity_camera_button_start"
       android:onClick="onClickRecordButton"
-      android:alpha="0.75" />  
+      android:alpha="0.75"
+      runspotrun:background="activity_camera_button_start" />  
   
   <LinearLayout 
       android:id="@+id/recordingBar"
@@ -51,7 +52,7 @@
           android:text="@string/activity_camera_click_to_tag_text"
           android:textAppearance="?android:attr/textAppearanceSmall" />  
         
-      <Button
+      <uk.ac.horizon.runspotrun.ui.view.ImageButton
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginRight="5dp"
@@ -59,10 +60,10 @@
           android:layout_marginTop="5dp"
           android:layout_alignParentRight="true"
           android:layout_centerVertical="true"
-          android:background="@drawable/activity_camera_button_stop"
           android:onClick="onClickStopButton"
           android:alpha="0.90"
-          android:gravity="right|center_vertical" />
+          android:gravity="right|center_vertical"
+          runspotrun:background="activity_camera_button_stop" />
         
     </RelativeLayout>
       
@@ -110,7 +111,7 @@
             android:textSize="40sp"
             android:background="@android:color/transparent" />
         
-        <Button
+        <uk.ac.horizon.runspotrun.ui.view.ImageButton
             android:layout_alignParentRight="true"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
@@ -118,8 +119,8 @@
             android:layout_marginBottom="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/activity_camera_button_delete"
-            android:onClick="onClickDeleteButton" />  
+            android:onClick="onClickDeleteButton"
+            runspotrun:background="activity_camera_button_delete" />  
           
       </RelativeLayout>
         
@@ -231,19 +232,19 @@
 	  </TableRow>
 
     <TableRow
-    	  android:layout_width="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-      <Button
+      <uk.ac.horizon.runspotrun.ui.view.ImageButton
           style="@style/activity_camera_button_keypad"
           android:alpha="0.75"
+          android:background="@drawable/button_rounded_corner"
           android:layout_span="3"
           android:layout_marginTop="20dp"
           android:paddingLeft="5dp"
-          android:background="@drawable/activity_camera_button_hotspot"
-          android:drawableLeft="@drawable/activity_camera_button_hotspot_image"
           android:onClick="onClickHotTagButton"
-          android:text="@string/activity_camera_submit_hottag_text" />
+          android:text="@string/activity_camera_submit_hottag_text"
+          runspotrun:drawableLeft="activity_camera_button_hotspot" />
       
     </TableRow>
       

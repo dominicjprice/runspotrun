@@ -11,7 +11,7 @@
   </style>
   
   <style name="button">
-    <item name="android:background">@drawable/button</item>
+    <item name="android:background">@drawable/button_square_corner</item>
     <item name="android:textColor">@color/button</item>
     <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     <item name="android:paddingTop">5dp</item>
@@ -60,9 +60,6 @@
   <style name="activity_camera_button_keypad" parent="@style/button">
     <item name="android:layout_width">75dp</item>
     <item name="android:layout_height">50dp</item>
-    <item name="android:background">
-        @drawable/activity_camera_button_keypad
-    </item>
   </style>
     
 </resources>
