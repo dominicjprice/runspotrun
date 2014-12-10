@@ -25,7 +25,7 @@ extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		startService(new Intent(this, ServiceMonitor.class));
+		startService(new Intent(this, ServiceMonitor.class));		
 	}
 
 }

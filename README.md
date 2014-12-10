@@ -95,3 +95,22 @@ Horizon Digital Economy Research, The University of Nottingham
       in size and color), icon made by Freepik (http://www.freepik.com) 
       available at http://www.flaticon.com/free-icon/machine-gear_128
       are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
+      
+    - res/drawable/checkbox.xml was generated using the Android Holo Colors
+      Generator (http://android-holo-colors.com/) and is licensed under the
+      Apache 2.0 license available at http://www.apache.org/licenses/LICENSE-2.0.
+      
+    - res/drawable/checkbox_off_disabled_focused.png,
+      res/drawable/checkbox_off_disabled_focused.png,
+      res/drawable/checkbox_off_disabled.png,
+      res/drawable/checkbox_off_focused.png,
+      res/drawable/checkbox_off_pressed.png,
+      res/drawable/checkbox_off.png,
+      res/drawable/checkbox_on_disabled_focused.png, 
+      res/drawable/checkbox_on_disabled.png,
+      res/drawable/checkbox_on_focused.png,
+      res/drawable/checkbox_on_pressed.png and checkbox_on.png were generated
+      using the Android Holo Colors Generator (http://android-holo-colors.com/) 
+      and are licensed under the Creative Commons Attribution 3.0 Unported License
+      available at http://creativecommons.org/licenses/by/3.0/. File names
+      were modified and the source modified to reflect the file name changes.

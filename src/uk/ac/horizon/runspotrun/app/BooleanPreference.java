@@ -11,7 +11,8 @@ class BooleanPreference {
 	
 	private SharedPreferences prefs;		
 	
-	public BooleanPreference(SharedPreferences prefs, String key, boolean defaultValue) {
+	public BooleanPreference(
+			SharedPreferences prefs, String key, boolean defaultValue) {
 		this.prefs = prefs;
 		this.key = key;
 		this.defaultValue = defaultValue;

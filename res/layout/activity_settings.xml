@@ -39,7 +39,8 @@
         android:layout_height="match_parent"
         android:divider="@color/light"
         android:dividerHeight="2dp"
-        android:id="@android:id/list" />
+        android:id="@android:id/list"
+        android:alpha="0.75" />
 
   </LinearLayout>
 
