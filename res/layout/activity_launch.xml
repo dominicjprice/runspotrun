@@ -30,6 +30,13 @@
     
   </LinearLayout>
   
+  <ProgressBar
+      android:id="@+id/activity_launch_spinner"
+      style="?android:attr/progressBarStyleLarge"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true" />
+  
   <uk.ac.horizon.runspotrun.ui.view.AssetWebView 
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
@@ -37,7 +44,9 @@
       android:layout_alignParentLeft="true"
       android:layout_alignParentRight="true"
       android:layout_above="@id/activity_launch_button_bar"
-      android:alpha="0.75"
+      runspotrun:crossfade="@id/activity_launch_spinner"
+      runspotrun:crossfade_minalpha="0.0"
+      runspotrun:crossfade_maxalpha="0.75"
       runspotrun:resource="consent.html" />
 
 </RelativeLayout>

@@ -37,6 +37,9 @@ Horizon Digital Economy Research, The University of Nottingham
       (libs/jackson-databind-2.4.1.1.jar) libraries are licensed under
       the Apache 2.0 license available at http://www.apache.org/licenses/LICENSE-2.0.
       
+    - The Android Support V4 (libs/android-support-v4.jar) library is licensed
+      under the Apache 2.0 license available at http://www.apache.org/licenses/LICENSE-2.0.
+      
     - The Android-JSON-RPC library (libs/android-json-rpc-0.3.4.jar) is licensed under
       the MIT license available at http://opensource.org/licenses/mit-license.php.
     

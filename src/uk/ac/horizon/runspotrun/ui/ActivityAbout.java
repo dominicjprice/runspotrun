@@ -17,5 +17,4 @@ extends Activity {
 	public void onClickClose(View view) {
 		finish();
 	}
-	
 }

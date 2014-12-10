@@ -24,6 +24,14 @@
     
   </LinearLayout>
   
+  <ProgressBar
+      android:id="@+id/activity_logon_spinner"
+      style="?android:attr/progressBarStyleLarge"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:alpha="0.75" />
+  
   <uk.ac.horizon.runspotrun.ui.view.LogonWebView 
       android:id="@+id/logon_web_view"
       android:layout_width="fill_parent"
@@ -32,6 +40,7 @@
       android:layout_alignParentLeft="true"
       android:layout_alignParentRight="true"
       android:layout_above="@id/activity_logon_button_bar"
-      android:alpha="0.75" />
+      android:alpha="0.75"
+      runspotrun:busy="@id/activity_logon_spinner" />
 
 </RelativeLayout>

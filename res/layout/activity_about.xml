@@ -16,22 +16,34 @@
       android:layout_alignParentLeft="true"
       android:layout_alignParentRight="true" >
 
-	<Button
-		style="@style/activity_about_button"
+    <Button
+        style="@style/activity_about_button"
 		android:alpha="0.75"
 	    android:text="@string/activity_about_close_button_text"
 	    android:onClick="onClickClose" />
     
   </LinearLayout>
   
+  <ProgressBar
+      android:id="@+id/activity_about_spinner"
+      style="?android:attr/progressBarStyleLarge"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true" />
+  
   <uk.ac.horizon.runspotrun.ui.view.AssetWebView  
+      android:id="@+id/activity_about_asset_web_view"
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
       android:layout_alignParentTop="true"
       android:layout_alignParentLeft="true"
       android:layout_alignParentRight="true"
       android:layout_above="@id/activity_about_button_bar"
-      android:alpha="0.75"
-      runspotrun:resource="about.html" />
+      runspotrun:crossfade="@id/activity_about_spinner"
+      runspotrun:crossfade_minalpha="0.0"
+      runspotrun:crossfade_maxalpha="0.75"
+      runspotrun:resource="about.html" >
+    
+  </uk.ac.horizon.runspotrun.ui.view.AssetWebView>
 
 </RelativeLayout>
