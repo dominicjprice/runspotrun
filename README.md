@@ -9,7 +9,7 @@ This is the Android client application for [RunSpotRun](http://www.runspotrun.co
 License
 -------
 
-Copyright (C) 2014 Dominic Price (dominic.price@nottingham.ac.uk),
+Copyright (C) 2014 Dominic Price (dominic.price@nottingham.ac.uk),  
 Horizon Digital Economy Research, The University of Nottingham
 
     This program is free software: you can redistribute it and/or modify
@@ -43,12 +43,55 @@ Horizon Digital Economy Research, The University of Nottingham
     - The Android-JSON-RPC library (libs/android-json-rpc-0.3.4.jar) is licensed under
       the MIT license available at http://opensource.org/licenses/mit-license.php.
     
-    - res/drawable/background_logo.png and res/drawable/logo.png (which have been 
+    - res/drawable/background_image.png and res/drawable/logo.png (which have been 
       modified in size and color), icons made by Freepik (http://www.freepik.com) available at 
       http://www.flaticon.com/free-icon/running-at-finish-line_18143
       are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
     
-    - res/drawable/activity_camera_button_hotspot_image.png (which has been modified
-      in size and color), icon made by Freepik (http://www.freepik.com) available at 
-      http://www.flaticon.com/free-icon/binoculars-with-eyes_32012
-      is licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
+    - res/drawable/activity_camera_button_delete_off.png and
+      res/drawable/activity_camera_button_delete_on.png (which have been modified
+      in size and color), icon made by Google (http://www.google.com) available at 
+      http://www.flaticon.com/free-icon/backspace-arrow_61167
+      are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
+    
+    - res/drawable/activity_camera_button_hotspot_off.png and
+      res/drawable/activity_camera_button_hotspot_on.png (which have been modified
+      in size and color), icon made by OCHA (http://www.unocha.org) available at
+      http://www.flaticon.com/free-icon/fire-flames-silhouette_27813
+      are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
+      
+    - res/drawable/activity_camera_button_stop_off.png and
+      res/drawable/activity_camera_button_stop_on.png (which have been modified
+      in size and color), icon made by Elegant Themes (http://www.elegantthemes.com)
+      available at http://www.flaticon.com/free-icon/stop-square_8755
+      are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
+      
+    - res/drawable/activity_home_button_about_off.png and
+      res/drawable/activity_home_button_about_on.png (which have been modified
+      in size and color), icon made by Daniel Bruce (http://www.danielbruce.se)
+      available at http://www.flaticon.com/free-icon/info-sign_3716
+      are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
+      
+    - res/drawable/activity_home_button_logon_off.png and
+      res/drawable/activity_home_button_logon_on.png (which have been modified
+      in size and color), icon made by Freepik (http://www.freepik.com) 
+      available at http://www.flaticon.com/free-icon/user-black-shape_16612
+      are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
+      
+    - res/drawable/activity_home_button_record_off.png and
+      res/drawable/activity_home_button_record_on.png (which have been modified
+      in size and color), icon made by Yannick (http://yanlu.de) 
+      available at http://www.flaticon.com/free-icon/camera-film_12243
+      are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
+      
+    - res/drawable/activity_home_button_review_off.png and
+      res/drawable/activity_home_button_review_on.png (which have been modified
+      in size and color), icon made by Designerz Base (http://www.finest.graphics) 
+      available at http://www.flaticon.com/free-icon/tiles-view_13009
+      are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
+      
+    - res/drawable/activity_home_button_settings_off.png and
+      res/drawable/activity_home_button_settings_on.png (which have been modified
+      in size and color), icon made by Freepik (http://www.freepik.com) 
+      available at http://www.flaticon.com/free-icon/machine-gear_128
+      are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).

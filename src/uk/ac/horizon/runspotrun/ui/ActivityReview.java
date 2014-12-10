@@ -3,7 +3,6 @@ package uk.ac.horizon.runspotrun.ui;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-
 import uk.ac.horizon.runspotrun.R;
 import uk.ac.horizon.runspotrun.app.App;
 import uk.ac.horizon.runspotrun.app.Log;
@@ -22,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -48,7 +48,9 @@ implements ServiceVideoUpload.UploadProgressListener {
 	
 	private ServiceVideoUpload.BinderServiceVideoUpload service;
 	
+	@SuppressLint("UseSparseArrays")
 	private Map<Long, Button> buttons = new HashMap<Long, Button>();
+	
 	
 	public void onClickClose(View v) {
 		close();
@@ -77,18 +79,13 @@ implements ServiceVideoUpload.UploadProgressListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_review);
-	}
-	
-	@Override
-	protected void onStart() {
-		super.onStart();
-        if(!bindService(new Intent(this, ServiceVideoUpload.class), 
+		if(!bindService(new Intent(this, ServiceVideoUpload.class), 
         		connection, Context.BIND_AUTO_CREATE))
         	Log.w("Unable to bind to ServiceVideoUpload");
 	}
 	
-	protected void onStop() {
-		super.onStop();
+	protected void onDestroy() {
+		super.onDestroy();
 		if(service != null) {
 			service.removeListener(this);
 			unbindService(connection);

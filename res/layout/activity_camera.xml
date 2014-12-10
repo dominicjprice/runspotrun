@@ -237,6 +237,7 @@
 
       <uk.ac.horizon.runspotrun.ui.view.ImageButton
           style="@style/activity_camera_button_keypad"
+          android:layout_height="60dp"
           android:alpha="0.75"
           android:background="@drawable/button_rounded_corner"
           android:layout_span="3"
