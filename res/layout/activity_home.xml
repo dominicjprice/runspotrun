@@ -33,7 +33,10 @@
           android:gravity="center"
           android:textColor="@color/highlight"
           android:drawableLeft="@drawable/warning"
-          android:padding="5dp" />
+          android:paddingLeft="15dp"
+          android:paddingRight="15dp"
+          android:paddingTop="5dp"
+          android:paddingBottom="5dp" />
       
       <LinearLayout 
           android:layout_width="match_parent"
