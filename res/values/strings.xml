@@ -61,7 +61,11 @@
   <string name="activity_home_my_videos_button_text">Review</string>
   <string name="activity_home_about_button_text">About</string>
   <string name="activity_home_logon_button_text">Logon</string>
-  <string name="activity_home_not_logged_in_text">You are not logged in</string>
+  <string name="activity_home_not_logged_in_text">
+      You are not currently logged in, you can continue
+      to use RunSpotRun but your videos and tags will
+      not be uploaded until you log in.
+  </string>
   <string name="activity_home_exit_button_text">Exit</string>
   
   <string name="activity_launch_cancel_button_text">I Do Not Agree</string>

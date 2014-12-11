@@ -105,6 +105,11 @@ Horizon Digital Economy Research, The University of Nottingham
       available at http://www.flaticon.com/free-icon/door-exit-with-arrow-to-the-right_24069
       are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
       
+    - res/drawable/warning.png (which has been modified in size and color),
+      icon made by Icomoon (http://www.icomoon.io) 
+      available at http://www.flaticon.com/free-icon/hazard-warning_24023
+      are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
+      
     - res/drawable/checkbox.xml and res/drawable/radio.xml were generated using
       the Android Holo Colors Generator (http://android-holo-colors.com/) and
       are licensed under the Apache 2.0 license available at 
