@@ -64,7 +64,7 @@
   
   <style name="settings_dialog">
     <item name="android:background">@color/dark</item>
-    <item name="android:textColor">@color/highlight</item>
+    <item name="android:textColor">@android:color/white</item>
     <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">wrap_content</item>

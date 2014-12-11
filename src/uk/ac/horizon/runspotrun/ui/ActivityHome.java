@@ -64,6 +64,10 @@ extends Activity {
 		startActivity(new Intent(this, ActivityLogon.class));
 	}
 	
+	public void onClickExit(View view) {
+		finish();
+	}
+	
 	private void setLogonSectionVisibility() {
 		if(accessToken != null) {
 			String v = accessToken.get();

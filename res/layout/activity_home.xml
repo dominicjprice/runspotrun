@@ -16,6 +16,32 @@
       android:paddingRight="0dp"
       android:paddingTop="0dp"
       android:orientation="vertical">
+      
+    <LinearLayout 
+        android:id="@+id/activity_home_logon_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAppearance="?android:attr/textAppearanceLarge"
+          android:text="@string/activity_home_not_logged_in_text" />
+      
+      <uk.ac.horizon.runspotrun.ui.view.ImageButton
+          style="@style/activity_home_button"
+          android:text="@string/activity_home_logon_button_text"
+          android:alpha="0.75"
+          android:onClick="onClickLogon"
+          runspotrun:drawableLeft="activity_home_button_logon" />
+      
+      <LinearLayout 
+          android:layout_width="match_parent"
+          android:layout_height="2dip"
+          android:background="@color/light" />
+        
+    </LinearLayout>
 	
     <uk.ac.horizon.runspotrun.ui.view.ImageButton
         style="@style/activity_home_button"
@@ -61,30 +87,16 @@
         runspotrun:drawableLeft="activity_home_button_about" />
     
     <LinearLayout 
-        android:id="@+id/activity_home_logon_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-        
-      <LinearLayout 
-          android:layout_width="match_parent"
-          android:layout_height="2dip"
-          android:background="@color/light" />
+        android:layout_height="2dip"
+        android:background="@color/light" />
     
-      <uk.ac.horizon.runspotrun.ui.view.ImageButton
-          style="@style/activity_home_button"
-          android:text="@string/activity_home_logon_button_text"
-          android:alpha="0.75"
-          android:onClick="onClickLogon"
-          runspotrun:drawableLeft="activity_home_button_logon" />
-
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textAppearance="?android:attr/textAppearanceLarge"
-          android:text="@string/activity_home_not_logged_in_text" />
-        
-    </LinearLayout>
+    <uk.ac.horizon.runspotrun.ui.view.ImageButton
+        style="@style/activity_home_button"
+        android:text="@string/activity_home_exit_button_text"
+        android:alpha="0.75"
+        android:onClick="onClickExit"
+        runspotrun:drawableLeft="activity_home_button_exit" />
     	
   </LinearLayout>
 	
