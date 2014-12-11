@@ -18,9 +18,9 @@
 
     <Button
         style="@style/activity_about_button"
-		android:alpha="0.75"
-	    android:text="@string/activity_about_close_button_text"
-	    android:onClick="onClickClose" />
+		    android:alpha="0.75"
+	      android:text="@string/activity_about_close_button_text"
+	      android:onClick="onClickClose" />
     
   </LinearLayout>
   

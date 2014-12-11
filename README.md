@@ -4,7 +4,10 @@ RunSpotRun Android Client
 About
 -----
 
-This is the Android client application for [RunSpotRun](http://www.runspotrun.co.uk/) created by the [Mixed Reality Lab](http://www.mrl.nott.ac.uk) and [Horizon Digital Economy Research](http://www.horizon.ac.uk) at the [University of Nottingham](http://www.nottingham.ac.uk).
+This is the Android client application for [RunSpotRun](http://www.runspotrun.co.uk/)
+created by the [Mixed Reality Lab](http://www.mrl.nott.ac.uk) and 
+[Horizon Digital Economy Research](http://www.horizon.ac.uk) at the 
+[University of Nottingham](http://www.nottingham.ac.uk).
 
 License
 -------
@@ -96,9 +99,10 @@ Horizon Digital Economy Research, The University of Nottingham
       available at http://www.flaticon.com/free-icon/machine-gear_128
       are licensed under CC BY 3.0 license (http://creativecommons.org/licenses/by/3.0/).
       
-    - res/drawable/checkbox.xml was generated using the Android Holo Colors
-      Generator (http://android-holo-colors.com/) and is licensed under the
-      Apache 2.0 license available at http://www.apache.org/licenses/LICENSE-2.0.
+    - res/drawable/checkbox.xml and res/drawable/radio.xml were generated using
+      the Android Holo Colors Generator (http://android-holo-colors.com/) and
+      are licensed under the Apache 2.0 license available at 
+      http://www.apache.org/licenses/LICENSE-2.0.
       
     - res/drawable/checkbox_off_disabled_focused.png,
       res/drawable/checkbox_off_disabled_focused.png,
@@ -109,7 +113,19 @@ Horizon Digital Economy Research, The University of Nottingham
       res/drawable/checkbox_on_disabled_focused.png, 
       res/drawable/checkbox_on_disabled.png,
       res/drawable/checkbox_on_focused.png,
-      res/drawable/checkbox_on_pressed.png and checkbox_on.png were generated
+      res/drawable/checkbox_on_pressed.png,
+      res/drawable/checkbox_on.png,
+      res/drawable/radio_off_disabled_focused.png,
+      res/drawable/radio_off_disabled_focused.png,
+      res/drawable/radio_off_disabled.png,
+      res/drawable/radio_off_focused.png,
+      res/drawable/radio_off_pressed.png,
+      res/drawable/radio_off.png,
+      res/drawable/radio_on_disabled_focused.png, 
+      res/drawable/radio_on_disabled.png,
+      res/drawable/radio_on_focused.png,
+      res/drawable/radio_on_pressed.png and 
+      res/drawable/radio_on.png were generated
       using the Android Holo Colors Generator (http://android-holo-colors.com/) 
       and are licensed under the Creative Commons Attribution 3.0 Unported License
       available at http://creativecommons.org/licenses/by/3.0/. File names

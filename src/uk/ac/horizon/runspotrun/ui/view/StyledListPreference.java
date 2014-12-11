@@ -1,92 +1,103 @@
 package uk.ac.horizon.runspotrun.ui.view;
 
+import uk.ac.horizon.runspotrun.R;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class StyledListPreference 
 extends ListPreference {
 
+	private final Context context;
+	
+	private int selectedIndex;
+	
+	private AlertDialog dialog;
+
 	public StyledListPreference(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		this.context = context;
 	}
 
 	public StyledListPreference(Context context) {
 		super(context);
+		this.context = context;
 	}
 	
 	@Override
-	protected View onCreateDialogView() {
-		View dialog = super.onCreateDialogView();
-		
+	public Dialog getDialog() {
 		return dialog;
 	}
 	
-	/*
-	 * @Override
+	@Override
+    protected void onPrepareDialogBuilder(Builder builder) {		
+        View title = View.inflate(context, 
+				R.layout.layout_settings_dialog_title, null);
+		((TextView)title.findViewById(
+				R.id.layout_settings_dialog_title)).setText(getTitle());
+		builder.setCustomTitle(title);	
+		builder.setNegativeButton(null, null);
+		builder.setPositiveButton(null, null);
+		builder.setNeutralButton(null, null);
+    }
+	
+	@Override
     protected View onCreateDialogView() {
-        // inflate custom layout with custom title & listview
-        View view = View.inflate(getContext(), R.layout.dialog_settings_updatetime, null);
-
-        mDialogTitle = getDialogTitle();
-        if(mDialogTitle == null) mDialogTitle = getTitle();
-        ((TextView) view.findViewById(R.id.dialog_title)).setText(mDialogTitle);
-
-        ListView list = (ListView) view.findViewById(android.R.id.list);
-        // note the layout we're providing for the ListView entries
+        View view = View.inflate(
+        		getContext(), R.layout.layout_settings_dialog, null);
+        ListView list = (ListView)view.findViewById(android.R.id.list);
+        
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
-                getContext(), R.layout.btn_radio,
-                getEntries());
-
+        		context, R.layout.layout_settings_radio, getEntries());
         list.setAdapter(adapter);
         list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         list.setItemChecked(findIndexOfValue(getValue()), true);
-        list.setOnItemClickListener(this);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(
+					AdapterView<?> parent, View view, int position, long id) {
+				selectedIndex = position;
+				StyledListPreference.this.onClick(
+						getDialog(), DialogInterface.BUTTON_POSITIVE);
+				getDialog().dismiss();
+			}
+		});
 
         return view;
     }
-
-    @Override
-    protected void onPrepareDialogBuilder(Builder builder) {
-        // adapted from ListPreference
-        if (getEntries() == null || getEntryValues() == null) {
-            // throws exception
-            super.onPrepareDialogBuilder(builder);
-            return;
-        }
-
-        mClickedDialogEntryIndex = findIndexOfValue(getValue());
-
-        // .setTitle(null) to prevent default (blue)
-        // title+divider from showing up
-        builder.setTitle(null);
-
-        builder.setPositiveButton(null, null);
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position,
-            long id) {
-        mClickedDialogEntryIndex = position;
-        ThemedListPreference.this.onClick(getDialog(), DialogInterface.BUTTON_POSITIVE);
-        getDialog().dismiss();
-    }
-
-    @Override
+	
+	@Override
     protected void onDialogClosed(boolean positiveResult) {
-            // adapted from ListPreference
         super.onDialogClosed(positiveResult);
-
-        if (positiveResult && mClickedDialogEntryIndex >= 0
-                && getEntryValues() != null) {
-            String value = getEntryValues()[mClickedDialogEntryIndex]
-                    .toString();
-            if (callChangeListener(value)) {
+        if(positiveResult) {
+        	String value = getEntryValues()[selectedIndex].toString();
+        	if(callChangeListener(value))
                 setValue(value);
-            }
         }
     }
-	 */
-
+	
+	@Override
+	protected void showDialog(Bundle state) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		View view = onCreateDialogView();
+		onBindDialogView(view);
+		onPrepareDialogBuilder(builder);
+		dialog = builder.create();
+		if(state != null)
+			dialog.onRestoreInstanceState(state);
+		dialog.setOnDismissListener(this);
+		dialog.setView(view, 0, 0, 0, 0);
+		dialog.show();
+	}
+	
 }
