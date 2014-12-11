@@ -19,7 +19,7 @@
     <Button
         style="@style/activity_launch_button"
         android:text="@string/activity_launch_cancel_button_text"
-		    android:alpha="0.75"
+		android:alpha="0.75"
         android:onClick="onClickDisagree" />
 
     <Button

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/dark"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+  
+  <TextView
+      android:id="@+id/title"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:textColor="@android:color/white"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:text="@string/activity_home_gps_warning_title_text"
+      android:gravity="center" />
+  
+  <TextView
+      android:id="@+id/body"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:textColor="@color/highlight"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:text="@string/activity_home_gps_warning_body_text"
+      android:gravity="center"
+      android:layout_below="@id/title" />
+  
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/body" >
+    
+    <Button
+        android:id="@+id/ignore"
+	    style="@style/button"
+	    android:text="@string/activity_home_gps_warning_ignore_button_text"
+	    android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+  
+    <Button
+        android:id="@+id/okay"
+	    style="@style/button"
+	    android:text="@string/activity_home_gps_warning_okay_button_text"
+	    android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+      
+  </LinearLayout>
+
+</RelativeLayout>

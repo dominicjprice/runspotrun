@@ -68,6 +68,17 @@
   </string>
   <string name="activity_home_exit_button_text">Exit</string>
   
+  <string name="activity_home_gps_warning_title_text">
+      Enable GPS?
+  </string>
+  <string name="activity_home_gps_warning_body_text">
+      GPS is currently disabled, you can continue without it enabled
+      but your spots will lose accuracy.  Press Okay to go to your
+      GPS settings or press Ignore to continue with GPS disabled.
+  </string>
+  <string name="activity_home_gps_warning_okay_button_text">Okay</string>
+  <string name="activity_home_gps_warning_ignore_button_text">Ignore</string>
+  
   <string name="activity_launch_cancel_button_text">I Do Not Agree</string>
   <string name="activity_launch_confirm_button_text">I Agree</string>
   
