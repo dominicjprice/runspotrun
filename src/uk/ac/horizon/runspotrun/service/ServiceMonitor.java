@@ -1,15 +1,22 @@
 package uk.ac.horizon.runspotrun.service;
 
 import uk.ac.horizon.runspotrun.app.AccessToken;
+import uk.ac.horizon.runspotrun.app.Log;
+import uk.ac.horizon.runspotrun.service.ServiceLogUpload.BinderServiceLogUpload;
+import uk.ac.horizon.runspotrun.service.ServiceVideoUpload.BinderServiceVideoUpload;
 import android.app.Service;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.os.Binder;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 
 public class ServiceMonitor 
 extends Service {
@@ -48,16 +55,22 @@ extends Service {
 				String uploadCompleteAction) {
 			switch(reason) {
 			case UPLOAD_COMPLETE:
+				Log.d("Video Uploader: Require UPLOAD_COMPLETE");
 				return uploadCompleteAction;
 			case REQUIRE_LOGIN:
+				Log.d("Video Uploader: Require REQUIRE_LOGIN");
 				return ACTION_LOGIN;
 			case REQUIRE_NETWORK:
+				Log.d("Video Uploader: Require REQUIRE_NETWORK");
 				return ConnectivityManager.CONNECTIVITY_ACTION;
 			case REQUIRE_WIFI:
+				Log.d("Video Uploader: Require REQUIRE_WIFI");
 				return WifiManager.SUPPLICANT_CONNECTION_CHANGE_ACTION;
 			case REQUIRE_POWER:
+				Log.d("Video Uploader: Require REQUIRE_POWER");
 				return Intent.ACTION_BATTERY_CHANGED;
 			case REQUIRE_STORAGE:
+				Log.d("Video Uploader: Require REQUIRE_STORAGE");
 				return Intent.ACTION_MEDIA_MOUNTED;
 			default:
 				throw new RuntimeException("Unknown reason given"); // UNCAUGHT
@@ -95,11 +108,43 @@ extends Service {
 		}
 	};
 	
+	private SharedPreferences.OnSharedPreferenceChangeListener 
+			preferenceListener =
+			new SharedPreferences.OnSharedPreferenceChangeListener() {
+				@Override
+				public void onSharedPreferenceChanged(
+						SharedPreferences sharedPreferences, String key) {
+					bindService(new Intent(ServiceMonitor.this, 
+							ServiceVideoUpload.class), new ServiceConnection() {
+						@Override
+						public void onServiceDisconnected(ComponentName name) {}
+						@Override
+						public void onServiceConnected(
+								ComponentName name, IBinder service) {
+							((BinderServiceVideoUpload)service).process();
+						}
+					}, Context.BIND_AUTO_CREATE);
+					bindService(new Intent(ServiceMonitor.this, 
+							ServiceLogUpload.class), new ServiceConnection() {
+						@Override
+						public void onServiceDisconnected(ComponentName name) {}
+						@Override
+						public void onServiceConnected(
+								ComponentName name, IBinder service) {
+							((BinderServiceLogUpload)service).process();
+						}
+					}, Context.BIND_AUTO_CREATE);
+				}
+				
+			};
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		accessToken = new AccessToken(this);
 		accessToken.listen(accessTokenListener);
+		PreferenceManager.getDefaultSharedPreferences(this)
+				.registerOnSharedPreferenceChangeListener(preferenceListener);
 	}
 	
 	@Override

@@ -76,6 +76,10 @@ extends Service {
 		public void removeListener(UploadProgressListener listener) {
 			listeners.remove(listener);
 		}
+		
+		public void process() {
+			onHandleIntent(null);
+		}
 	}
 	
 	private final Object LOCK = new Object();

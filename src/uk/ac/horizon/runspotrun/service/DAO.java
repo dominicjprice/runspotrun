@@ -32,5 +32,11 @@ abstract class DAO {
 		database = helper.getWritableDatabase();
 		writeQueue = Executors.newFixedThreadPool(1);
 	}
+	
+	@Override
+	protected void finalize() {
+		helper.close();
+		writeQueue.shutdown();
+	}
 
 }

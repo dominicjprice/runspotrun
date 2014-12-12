@@ -32,9 +32,14 @@ extends Service {
 	
 	public class BinderServiceLogUpload 
 	extends Binder {	
+		
 		public void insert(EntryLog entry) {
 			dao.insert(entry);
 			sendBroadcast(new Intent(ServiceMonitor.ACTION_LOG));
+		}
+		
+		public void process() {
+			onHandleIntent(null);
 		}
 	}
 	

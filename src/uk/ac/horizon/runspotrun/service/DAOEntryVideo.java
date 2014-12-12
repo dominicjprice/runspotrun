@@ -115,12 +115,6 @@ extends DAO {
 		});
 	}
 	
-	@Override
-	protected void finalize() {
-		helper.close();
-		writeQueue.shutdown();
-	}
-	
 	private EntryVideo cursorToEntry(Cursor c) {
 		EntryVideo e = new EntryVideo();
 		e.id = c.getLong(0);
