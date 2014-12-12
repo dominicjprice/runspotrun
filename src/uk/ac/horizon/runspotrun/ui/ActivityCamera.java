@@ -26,6 +26,7 @@ import uk.ac.horizon.runspotrun.ui.view.RunnerTagEditText;
 import uk.ac.horizon.runspotrun.util.Retry;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -46,6 +47,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
 @SuppressWarnings("deprecation")
@@ -317,6 +319,8 @@ extends Activity {
 				cameraHandler.sendMessage(m);
 			}
 		});
+		
+		showGpsWarning();
 	}
 	
 	@Override
@@ -521,6 +525,34 @@ extends Activity {
 				logService.insert(entry);				
 			}
 		}).start();
+	}
+	
+	private void showGpsWarning() {
+		LocationManager m = 
+				(LocationManager)this.getSystemService(LOCATION_SERVICE);
+		if(m.isProviderEnabled(LocationManager.GPS_PROVIDER))
+			return;
+		AlertDialog.Builder b = new AlertDialog.Builder(this);
+		final AlertDialog d = (AlertDialog)b.create();
+		View v = View.inflate(this, R.layout.layout_gps_alert_dialog, null);
+		((Button)v.findViewById(R.id.okay)).setOnClickListener(
+				new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				d.dismiss();
+				startActivity(new Intent(
+						Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+			}
+		});
+		((Button)v.findViewById(R.id.ignore)).setOnClickListener(
+				new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				d.dismiss();				
+			}
+		});
+		d.setView(v, 0, 0, 0, 0);
+		d.show();
 	}
 	
 }

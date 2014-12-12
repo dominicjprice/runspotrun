@@ -7,6 +7,10 @@
       android:color="@color/inverse_highlight" />
   
   <item
+      android:state_enabled="false"
+      android:color="@color/dark" />
+  
+  <item
       android:color="@color/highlight" />
   
 </selector>

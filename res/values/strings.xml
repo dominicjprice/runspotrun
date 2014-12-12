@@ -90,7 +90,8 @@
   <string name="activity_review_uploading">%s%% Uploaded</string>
   <string name="activity_review_uploaded">Uploaded</string>
   <string name="activity_review_close_button_text">Close</string>
-  <string name="activity_review_thumbnail_button_text">View video</string>  
+  <string name="activity_review_thumbnail_button_text">View video</string>
+  <string name="activity_review_load_button_text">Load More</string>
 
   <string name="activity_settings_close_button_text">Close</string>
   

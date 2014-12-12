@@ -5,7 +5,7 @@
     xmlns:runspotrun="http://www.runspotrun.co.uk/dev/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    style="@style/default_theme" >
+    android:stretchColumns="2">
 
   <TableRow>
   
@@ -13,28 +13,49 @@
         style="@style/activity_review_button"
         android:id="@+id/activity_review_thumbnail_button"
         android:alpha="0.75"
-        android:layout_span="2"
-        android:layout_weight="0.5"
+        android:layout_span="1"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:contentDescription="@string/activity_review_thumbnail_button_text" />
+    
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_span="1"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:background="@color/dark"
+        android:alpha="0.75">
+        
+      <TextView
+          android:id="@+id/activity_review_item_text"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:textColor="@android:color/white" />
+        
+    </LinearLayout>
     
   </TableRow>
   
   <TableRow>
       
     <Button
-		style="@style/activity_settings_button"
-		android:id="@+id/activity_review_delete_button"
-		android:alpha="0.75"
-		android:layout_span="1"
-		android:layout_weight="0.5"
+		  style="@style/activity_settings_button"
+		  android:id="@+id/activity_review_delete_button"
+		  android:alpha="0.75"
+		  android:layout_span="1"
+		  android:layout_weight="1"
+		  android:layout_width="0dp"
 	    android:text="@string/activity_review_delete" />
   	
   	<Button
-		style="@style/activity_settings_button"
-		android:id="@+id/activity_review_upload_button"
-		android:alpha="0.75"
-		android:layout_span="1"
-		android:layout_weight="0.5" />
+		  style="@style/activity_settings_button"
+		  android:id="@+id/activity_review_upload_button"
+		  android:alpha="0.75"
+		  android:layout_span="1"
+		  android:layout_weight="1"
+		  android:layout_width="0dp" />
     
   </TableRow>
     

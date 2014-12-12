@@ -15,29 +15,48 @@
       android:layout_alignParentBottom="true"
       android:layout_alignParentLeft="true"
       android:layout_alignParentRight="true" >
-
-	<Button
-		style="@style/activity_review_button"
-		android:alpha="0.75"
-	    android:text="@string/activity_review_close_button_text"
-	    android:onClick="onClickClose" />
+      
+	  <Button
+	      android:id="@+id/activity_review_load_button"
+	      style="@style/activity_review_button"
+	      android:layout_width="0dp"
+	      android:layout_weight="0.5"
+	      android:alpha="0.75"
+	      android:text="@string/activity_review_load_button_text"
+	      android:onClick="onClickLoadMore" />
+	
+		<Button
+			  style="@style/activity_review_button"
+			  android:layout_width="0dp"
+			  android:layout_weight="0.5"
+			  android:alpha="0.75"
+		    android:text="@string/activity_review_close_button_text"
+		    android:onClick="onClickClose" />
     
   </LinearLayout>
+  
+  <ProgressBar
+      android:id="@+id/activity_review_spinner"
+      style="?android:attr/progressBarStyleLarge"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true" />
 
   <ScrollView
-	  android:layout_width="fill_parent"
-	  android:layout_height="fill_parent"
-	  android:layout_alignParentTop="true"
+      android:id="@+id/activity_review_scrollview"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_alignParentTop="true"
       android:layout_alignParentLeft="true"
       android:layout_alignParentRight="true"
       android:layout_above="@id/activity_review_button_bar" >
 	      
-	<LinearLayout 
-	    android:id="@+id/review_layout"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical" >
-	</LinearLayout>
+		<LinearLayout 
+		    android:id="@+id/review_layout"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >
+		</LinearLayout>
 	      
   </ScrollView>
 

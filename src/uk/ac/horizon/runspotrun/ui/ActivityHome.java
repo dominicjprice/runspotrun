@@ -2,13 +2,9 @@ package uk.ac.horizon.runspotrun.ui;
 
 import uk.ac.horizon.runspotrun.R;
 import uk.ac.horizon.runspotrun.app.AccessToken;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.View;
-import android.widget.Button;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 
 public class ActivityHome 
@@ -30,7 +26,6 @@ extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		showGpsWarning();
 	}
 	
 	@Override
@@ -86,34 +81,6 @@ extends Activity {
 			logonView.setVisibility(visible ? View.VISIBLE : View.GONE);
 			logonView.refreshDrawableState();
 		}
-	}
-	
-	private void showGpsWarning() {
-		LocationManager m = 
-				(LocationManager)this.getSystemService(LOCATION_SERVICE);
-		if(m.isProviderEnabled(LocationManager.GPS_PROVIDER))
-			return;
-		AlertDialog.Builder b = new AlertDialog.Builder(this);
-		final AlertDialog d = (AlertDialog)b.create();
-		View v = View.inflate(this, R.layout.layout_gps_alert_dialog, null);
-		((Button)v.findViewById(R.id.okay)).setOnClickListener(
-				new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				d.dismiss();
-				startActivity(new Intent(
-						Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-			}
-		});
-		((Button)v.findViewById(R.id.ignore)).setOnClickListener(
-				new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				d.dismiss();				
-			}
-		});
-		d.setView(v, 0, 0, 0, 0);
-		d.show();
 	}
 
 }
