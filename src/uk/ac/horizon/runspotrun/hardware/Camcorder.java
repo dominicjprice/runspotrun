@@ -23,6 +23,8 @@ public class Camcorder {
 					CamcorderProfile p = CamcorderProfile.get(i);
 					if(p != null) {
 						OPTIMUM_PROFILE = p;
+						if(android.os.Build.VERSION.SDK_INT > 9)
+							OPTIMUM_PROFILE.audioCodec = 3;
 						break;
 					}
 				} catch (Exception e) { }

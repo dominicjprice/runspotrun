@@ -1,5 +1,10 @@
+2.1 / 2015-01-19
+================
+
+  * Audio codec now defaults to AAC.
+
 2.0 / 2014-12-12
-==================
+================
 
   * User Interface:
     * Images updated.
