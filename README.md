@@ -1,34 +1,25 @@
-RunSpotRun Android Client
-=========================
-
-About
------
+#runspotrun-android-client
+> Android client for RunSpotRun.
 
 This is the Android client application for [RunSpotRun](http://www.runspotrun.co.uk/)
 created by the [Mixed Reality Lab](http://www.mrl.nott.ac.uk) and 
 [Horizon Digital Economy Research](http://www.horizon.ac.uk) at the 
 [University of Nottingham](http://www.nottingham.ac.uk).
 
-License
--------
+## Installation
+
+**The RunSpotRun project is currently on pause and all online services have been switched off. When the project is running, this client application will be available through the Google Play store.**
+
+## Development setup
+
+This project was developed using the Eclipse based Android development tool which is no longer available, it it untested but you may be able to import the project into [Android Studio](https://developer.android.com/studio/index.html).
+
+## Meta
 
 Copyright (C) 2014 Dominic Price (dominic.price@nottingham.ac.uk),  
 Horizon Digital Economy Research, The University of Nottingham
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as
-    published by the Free Software Foundation, either version 3 of the
-    License, or (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    
-    With the following exceptions:
+Distributed under version 3 of the GNU Affero General Public License. See ``LICENSE`` for more information. With the following exceptions:
     
     - All source code under src/com/microsoft is part of the Microsoft
       Azure Java Storage SDK (https://github.com/Azure/azure-storage-java)
